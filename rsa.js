@@ -1,4 +1,4 @@
-function isPrime(a){			//W
+function isPrime(a){			
 	for(var i=2;i<a-1;i++){
 		if(a%i==0){
 			return false;
@@ -6,7 +6,7 @@ function isPrime(a){			//W
 	}
 	return true;
 }
-function findPrime(min){		//W
+function findPrime(min){		
 	for(var i=min;true;i++){
 		if(isPrime(i)){
 			return i;
@@ -20,14 +20,15 @@ function GenerateKeys(min1,min2){
 	q = findPrime(min2);
 	m = p*q;
 	phi = (p-1)*(q-1);
-	e = 2;
-	while(true){
+	e = 22;
+	while(true){				//Diese schleife ist nötig falls das teilerfremde(e) kein Inverses unter m hat
 	e = findeNächstesTeilerfremdes(e);
+	console.log("e: " +e);
 	if(bestimmeInverses())
 		break;
 	}
 }
-function teilerfremd(a, b){			//W
+function teilerfremd(a, b){			
 	var kleinere = a>b?b:a==b?a:b;
 	for(var i = 2;i<=kleinere;i++){
 		if(a%i==0 && b%i==0)
@@ -45,9 +46,10 @@ function findeNächstesTeilerfremdes(altes){
 		}
 	}	
 }
-function bestimmeInverses(){
+function bestimmeInverses(){    //function liefert true wenn Inverses gefunden wurde und setzt es dann auch
 	for(var k = -2,d;true;k--){
 		d = (1-(k*phi))/e ;
+		console.log("d: " +d);
 		if(d<m){
 			if(ganzeZahl(d)&& e*d%phi ==1)
 			return true	
@@ -56,10 +58,10 @@ function bestimmeInverses(){
 		}
 	}
 }
-function encryptNumber(number){		//W
+function encryptNumber(number){		
 	return Math.pow(number,e)%m;
 }
-function decryptNumber(number){		//W
+function decryptNumber(number){		
 	return Math.pow(number,d)%m;
 }
 function decryptText(geheimtext){
