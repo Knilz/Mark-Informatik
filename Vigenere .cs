@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class Vigenere{
+public class Vigenere{
    
     public string passwort;
 
@@ -69,7 +69,6 @@ public partial class Vigenere{
             if (buchstabe == alphabet[i])
                 return i;
         }
-        Debug.Log("Buchstabe ist nicht im Alphabet");
         return 0;
     }
 }
