@@ -20,7 +20,7 @@ function GenerateKeys(min1,min2){
 	q = findPrime(min2);
 	m = p*q;
 	phi = (p-1)*(q-1);
-	e = 22;
+	e = 2;
 	while(true){				//Diese schleife ist nötig falls das teilerfremde(e) kein Inverses unter m hat
 	e = findeNächstesTeilerfremdes(e);
 	console.log("e: " +e);
@@ -61,8 +61,12 @@ function bestimmeInverses(){    //function liefert true wenn Inverses gefunden w
 function encryptNumber(number){		
 	return Math.pow(number,e)%m;
 }
-function decryptNumber(number){		
-	return Math.pow(number,d)%m;
+function decryptNumber(number){		//der Versuch die potenzierung für den computer zu vereinfachen
+	var ergebnis = number;
+	for(var i=0;i<d-1;i++){
+		ergebnis = (ergebnis*number) % m;	
+	}
+	return ergebnis;
 }
 function decryptText(geheimtext){
 	var klartext;
