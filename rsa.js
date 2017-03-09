@@ -1,6 +1,6 @@
 function isPrime(a){
 	for(var i=2;i<a-1;i++){
-		if(a%i){
+		if(a%i==0){
 			return false;
 		}
 	}
@@ -20,12 +20,7 @@ function GenerateKeys(min1,min2){
 	q = findPrime(min2);
 	m = p*q;
 	phi = (p-1)*(q-1);
-	for(var i =2;true; i++){
-		if(teilerfremd(i,phi){
-			e = i;
-			break;
-		}
-	}
+	e = findeErstesTeilerfremdes(phi);
 	d = bestimmeInverses(phi,e);
 }
 function teilerfremd(a, b){
@@ -36,8 +31,15 @@ function teilerfremd(a, b){
 	}
 	return true;
 }
-function ganzeZahl(a){
-	return (a == a.round());
+function ganzeZahl(a){      //nicht funktionierend
+	return (a == Math.round(a));
+}
+function findeErstesTeilerfremdes(phi){
+	for(var i =2;true; i++){
+		if(teilerfremd(i,phi)){
+			return i;
+		}
+	}	
 }
 function bestimmeInverses(phi,e){
 	for(var k = -2,d;true;k--){
