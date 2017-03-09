@@ -1,4 +1,5 @@
 # Mark-Informatik
 
-Ich habe die Vigenere-Klasse zur übersicht in zwei Teile geteilt: Das Ver- und Entschlüsseln im einen
-und die Kryptoanalyse nach Kasiski im anderen Teil. 
+Ich habe Vigenere zusammengefügt.
+RSA findet das multiplikative inverse zu e in bezug auf mod phi. 
+Aber das En-und Decrypten von Zahlen funktioniert nicht, wie es sollte. -> bei decryptNumber(encryptNumber(n)) kommt NaN 
