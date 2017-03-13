@@ -76,7 +76,7 @@ function ewEuklid(phi,e){
 	return u[1];
 }
 function bestimmeInverses(){    //function liefert true wenn Inverses gefunden wurde und setzt es dann auch
-	for(var k = -2,d;true;k--){
+	for(var k = -2;true;k--){
 		d = (1-(k*phi))/e ;
 		console.log("d: " +d);
 		if(d<m){
@@ -88,14 +88,17 @@ function bestimmeInverses(){    //function liefert true wenn Inverses gefunden w
 	}
 }
 function encryptNumber(number){		
-	return Math.pow(number,e)%m;
+	return (number^e%m);
 }
-function decryptNumber(number){		//der Versuch die potenzierung für den computer zu vereinfachen
+/*function decryptNumber(number){		//der Versuch die potenzierung für den computer zu vereinfachen (nicht funktionierend)
 	var ergebnis = number;
 	for(var i=0;i<d-1;i++){
 		ergebnis = (ergebnis*number) % m;	
 	}
 	return ergebnis;
+}*/  
+function decryptNumber(number){
+	return (number ^d%m);	
 }
 function decryptText(geheimtext){
 	var klartext;
