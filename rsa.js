@@ -36,7 +36,7 @@ function teilerfremd(a, b){
 	}
 	return true;
 }
-function ganzeZahl(a){      //W
+function ganzeZahl(a){      
 	return (a == Math.round(a));
 }
 function findeNächstesTeilerfremdes(altes){   
@@ -45,6 +45,35 @@ function findeNächstesTeilerfremdes(altes){
 			return i;
 		}
 	}	
+}
+function ggT(a,b){
+	var r;
+	if(!(b<a)){
+		var cache = a;
+		a = b;
+		b = cache;
+	}
+	while(b!=0){
+		r = a%b;
+		a = b;
+		b = r;
+	}
+	return a;
+}
+function ewEuklid(phi,e){
+	var u,v,q,t;
+	u = [1,0,phi];
+	v = [0,1,e];
+	t = [0,0,0];
+	while(v[2]!=0){
+		q = Math.floor(u[2]/v[2]);
+		for(var i =0; i<3;i++){
+			t[i] = 	u[i] -q*v[i];
+			u[i] = v[i];
+			v[i] = t[i];
+		}
+	}
+	return u[1];
 }
 function bestimmeInverses(){    //function liefert true wenn Inverses gefunden wurde und setzt es dann auch
 	for(var k = -2,d;true;k--){
