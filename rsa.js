@@ -14,7 +14,12 @@ function findPrime(min){
 	}
 }
 var p,q,e,d,m,phi ;
-
+function GenerateKeys(bereich){    
+	var min1,min2;
+	min1 = (int)(Math.random()*bereich)+100;
+	min2 = (int)(Math.random()*bereich)+100;
+	GenerateKeys(min1,min2);
+}
 function GenerateKeys(min1,min2){
 	p = findPrime(min1);
 	q = findPrime(min2);
@@ -88,16 +93,19 @@ function bestimmeInverses(){    //function liefert true wenn Inverses gefunden w
 	}
 }
 function encryptNumber(number){		
-	return (number^e%m);
+	return diskreteExponentation(e,m,number);
 }
-/*function decryptNumber(number){		//der Versuch die potenzierung für den computer zu vereinfachen (nicht funktionierend)
-	var ergebnis = number;
-	for(var i=0;i<d-1;i++){
-		ergebnis = (ergebnis*number) % m;	
+function decryptNumber(number){		//der Versuch die potenzierung für den computer zu vereinfachen (nicht funktionierend)
+	return diskreteExponentation(d,m,number);
+} 
+function diskreteExponentation(exp,mod,bas){
+	var ergebnis = bas;
+	for(var i=0;i<exp-1;i++){
+		ergebnis = (ergebnis*bas) % mod;	
 	}
 	return ergebnis;
-}*/  
-function decryptNumber(number){
+}
+function decryptKleineNumber(number){
 	return (number ^d%m);	
 }
 function decryptText(geheimtext){
