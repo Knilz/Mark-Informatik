@@ -12,3 +12,6 @@ function shiftText(nummer,sprache,verschiebung){
 	paragraph = findeParagraph(nummer,sprache);
 	paragraph.innerText = shift(paragraph.innerText,verschiebung);
 }
+function paragraphListe(){
+		
+}
