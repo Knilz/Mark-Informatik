@@ -1,7 +1,11 @@
 function shift(text, anzahlVerschiebungen){
 var verschobenerText = "";
 for(var i = 0;i<text.length;i++){
-verschobenerText+= String.fromCharCode(text.charCodeAt(i)+anzahlVerschiebungen);
+	var charcode = text.charCodeAt(i);
+	if(charcode!=32) 
+		verschobenerText+= String.fromCharCode(charcode+anzahlVerschiebungen);
+	else 
+		verschobenerText+= " ";
 }
 return verschobenerText;
 }
@@ -12,6 +16,12 @@ function shiftText(nummer,sprache,verschiebung){
 	paragraph = findeParagraph(nummer,sprache);
 	paragraph.innerText = shift(paragraph.innerText,verschiebung);
 }
-function paragraphListe(){
-		
+function paragraphListe(classname){
+	return document.getElementsByClassName(classname);	
+}
+function cShift(classname,verschiebung){
+	var paragraphliste = paragraphListe(classname);
+	for(var i = 0; i< paragraphliste.length;i++){
+		paragraphliste[i].innerText = shift(paragraphliste[i].innerText,verschiebung);	
+	}
 }
