@@ -2,10 +2,12 @@ function shift(text, anzahlVerschiebungen){
 var verschobenerText = "";
 for(var i = 0;i<text.length;i++){
 	var charcode = text.charCodeAt(i);
-	if(charcode!=32) 
-		verschobenerText+= String.fromCharCode(charcode+anzahlVerschiebungen);
+	if(charcode>64 && charcode<91) 
+		verschobenerText+= String.fromCharCode(((charcode+anzahlVerschiebungen)%92)+65);
+	else if(charcode>96 && charcode<123)
+		verschobenerText+= String.fromCharCode(((charcode+anzahlVerschiebungen)%123)+97);
 	else 
-		verschobenerText+= " ";
+		verschobenerText+= String.fromCharCode(charcode);
 }
 return verschobenerText;
 }
@@ -24,4 +26,7 @@ function cShift(classname,verschiebung){
 	for(var i = 0; i< paragraphliste.length;i++){
 		paragraphliste[i].innerText = shift(paragraphliste[i].innerText,verschiebung);	
 	}
+}
+function inASCIIBereich51(charcode){
+	if(charcode		
 }
