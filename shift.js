@@ -36,3 +36,17 @@ function inASCIIBereich(charcode){
 	else
 		return charcode+71;
 }
+function ha(text){
+	var häufigkeiten = new Array(256);	
+	for(var j=0; j<text.length;j++)
+		häufigkeiten[text.charCodeAt(j)]++;
+	return häufigkeiten;
+}
+function ha2(text){
+	var häufigkeiten = new Array(256);
+	for(var i = 0; i<256;i++)
+		häufigkeiten[i] = new Array(256);
+	for(var j=0; j<text.length-1;j++)
+		häufigkeiten[text.charCodeAt(j)][text.charCodeAt(++j)]++;
+	return häufigkeiten;
+}
